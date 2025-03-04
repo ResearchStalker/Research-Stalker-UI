@@ -1,0 +1,59 @@
+/* Navbar */
+.research-navbar {
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  background: transparent; /* Keep navbar transparent */
+  position: fixed; /* Keeps navbar fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensures navbar is above everything */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+}
+
+.logo a {
+  text-decoration: none; /* Ensure no underline */
+  color: inherit; /* Maintain original text color */
+}
+
+.logo a:hover {
+  text-decoration: none; /* Prevent underline on hover */
+}
+
+.logo-icon {
+  margin-right: 8px;
+}
+
+/* Brand Name */
+.brand-name {
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #003366;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  border-radius: 12px; /* Rounded corners */
+  padding: 8px 16px; /* Add padding for better spacing */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for definition */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+  user-select: none; /* Prevent text selection */
+  pointer-events: none; /* Ensures no accidental text interactions */
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.95); /* Slightly more opaque on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  }
+}

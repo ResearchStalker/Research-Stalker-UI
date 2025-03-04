@@ -1,0 +1,277 @@
+/* Page Container: Ensures Full Height and Proper Layout */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f9f9f9; /* Light background for better readability */
+}
+
+/* Main Content: Expands to push other elements down */
+.content {
+  flex-grow: 1; /* Ensures content fills available space */
+  padding: 60px 40px; /* Increased padding for better spacing */
+  max-width: 800px; /* Limit content width for better readability */
+  margin: 0 auto; /* Center content horizontally */
+  text-align: left; /* Align text to the left for better readability */
+}
+
+.footer-page-title {
+  font-size: 36px; /* Larger font size for emphasis */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: 'Arial', sans-serif;
+  color: #003366;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px; /* Added spacing below the title */
+  text-align: center; /* Center the title */
+}
+
+/* Section Styling */
+section {
+  margin-bottom: 30px; /* Spacing between sections */
+  padding: 20px;
+  background-color: #fff; /* White background for sections */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth hover effect */
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #003366;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #003366; /* Underline for section headings */
+    padding-bottom: 10px; /* Spacing between heading and content */
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8; /* Increased line height for better readability */
+    margin-bottom: 15px; /* Spacing between paragraphs */
+  }
+
+  ul {
+    list-style-type: disc; /* Bullet points for lists */
+    padding-left: 20px; /* Indent list items */
+    margin-bottom: 15px; /* Spacing below lists */
+
+    li {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 10px; /* Spacing between list items */
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0; /* Remove padding for mobile */
+  }
+
+  .content {
+    padding: 30px 20px; /* Adjusted padding for smaller screens */
+  }
+
+  .footer-page-title {
+    font-size: 28px; /* Smaller font size for mobile */
+    margin-bottom: 20px; /* Reduced spacing */
+  }
+
+  section {
+    padding: 15px; /* Reduced padding for smaller screens */
+
+    h2 {
+      font-size: 22px; /* Smaller heading size for mobile */
+    }
+
+    p {
+      font-size: 15px; /* Smaller font size for mobile */
+    }
+
+    ul li {
+      font-size: 15px; /* Smaller font size for mobile */
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-page-title {
+    font-size: 24px; /* Even smaller font size for very small screens */
+  }
+
+  section {
+    h2 {
+      font-size: 20px; /* Smaller heading size for very small screens */
+    }
+
+    p {
+      font-size: 14px; /* Smaller font size for very small screens */
+    }
+
+    ul li {
+      font-size: 14px; /* Smaller font size for very small screens */
+    }
+  }
+}
+
+/* FAQ Styling */
+.faq-item {
+  margin-bottom: 25px; /* Spacing between FAQ items */
+  padding: 20px;
+  background-color: #fff; /* White background for each FAQ item */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth hover effect */
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #003366;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6; /* Improved readability */
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style-type: disc; /* Bullet points for lists */
+    padding-left: 20px; /* Indent list items */
+    margin-bottom: 10px;
+
+    li {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 8px; /* Spacing between list items */
+    }
+  }
+}
+
+/* Responsive Design for FAQs */
+@media (max-width: 768px) {
+  .faq-item {
+    padding: 15px;
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+
+    ul li {
+      font-size: 15px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-item {
+    h3 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    ul li {
+      font-size: 14px;
+    }
+  }
+}
+
+/* GitHub Repository Styling */
+.github-repo {
+  margin: 20px 0;
+  text-align: center;
+
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #014e9f;
+    }
+
+    .github-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Postman Button Styling */
+.postman-button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #ff6c37; /* Postman’s signature orange */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #e65a2d;
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+
+  &:active {
+    background-color: #cc4e28;
+    transform: translateY(0); /* Reset lift effect */
+  }
+
+  &:focus {
+    outline: 3px solid rgba(255, 108, 55, 0.5);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .postman-button {
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .postman-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

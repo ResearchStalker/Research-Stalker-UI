@@ -1,0 +1,70 @@
+.force-graph-container {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+}
+
+.rv-force__interactive {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  user-select: none;
+  stroke: transparent;
+
+}
+
+.rv-force__node {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, stroke 0.3s ease-in-out;
+  user-select: none;
+  stroke: transparent;
+  stroke-width: 2px;
+}
+
+.rv-force__node:hover {
+  transform: scale(1.1);
+  stroke: darkred;
+}
+
+.rv-force__label {
+  pointer-events: none;
+  font-size: 8px;
+  text-shadow: #002244 2px 1px 1px;
+  font-weight: bold;
+  fill: white;
+  user-select: none;
+  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.rv-force__label:hover {
+  transform: scale(1.2);
+  text-shadow: #002244 3px 2px 5px;
+}
+
+.rv-force__link {
+  stroke: #505050;
+  stroke-width: 1px;
+  transition: stroke 0.3s ease-in-out;
+}
+
+.rv-force__link:hover {
+  stroke-opacity: 1;
+
+}
+
+.rv-force__svg {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.rv-force__svg:active {
+  cursor: grabbing;
+}

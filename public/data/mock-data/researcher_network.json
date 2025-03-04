@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "surname": "Smith",
+      "email": "alice.smith@university.edu",
+      "affiliation": "University of Science"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "surname": "Johnson",
+      "email": "bob.johnson@researchlab.org",
+      "affiliation": "Research Lab"
+    },
+    {
+      "id": 3,
+      "name": "Charlie",
+      "surname": "Davis",
+      "email": "charlie.davis@techinstitute.com",
+      "affiliation": "Tech Institute"
+    },
+    {
+      "id": 4,
+      "name": "Diana",
+      "surname": "Miller",
+      "email": "diana.miller@university.edu",
+      "affiliation": "University of Science"
+    },
+    {
+      "id": 5,
+      "name": "Eve",
+      "surname": "Brown",
+      "email": "eve.brown@biotech.com",
+      "affiliation": "Biotech Corp"
+    }
+  ],
+  "links": [
+    {
+      "source": 1,
+      "target": 2,
+      "quantity": 5
+    },
+    {
+      "source": 1,
+      "target": 3,
+      "quantity": 3
+    },
+    {
+      "source": 2,
+      "target": 4,
+      "quantity": 7
+    },
+    {
+      "source": 3,
+      "target": 5,
+      "quantity": 2
+    },
+    {
+      "source": 4,
+      "target": 5,
+      "quantity": 6
+    },
+    {
+      "source": 2,
+      "target": 5,
+      "quantity": 4
+    }
+  ]
+}

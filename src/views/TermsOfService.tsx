@@ -1,0 +1,104 @@
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../styles/views/footerPages.scss';
+
+const TermsOfService: React.FC = () => {
+    return (
+        <div className="page-container">
+            <Navbar />
+            <main className="content">
+                <h1 className="footer-page-title">Terms of Service</h1>
+                <p><strong>Last Updated:</strong> [Insert Date]</p>
+
+                <section>
+                    <h2>Introduction</h2>
+                    <p>
+                        Welcome to Research Stalker. By accessing or using our services, you agree to comply with and be bound by the following Terms of Service.
+                        If you do not agree to these terms, please do not use our services.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Acceptance of Terms</h2>
+                    <p>
+                        By using Research Stalker, you confirm that you have read, understood, and agree to these Terms of Service.
+                        These terms apply to all users of the service, including visitors, researchers, and contributors.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Prohibited Activities</h2>
+                    <p>
+                        You agree not to engage in the following activities:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Economic Profit:</strong> It is strictly forbidden to use Research Stalker or any of its content for economic profit or commercial purposes.
+                            The service is intended for academic, educational, and non-commercial use only.
+                        </li>
+                        <li>
+                            <strong>Unauthorized Distribution:</strong> You may not distribute, reproduce, or share any content from Research Stalker without prior written consent from the creators.
+                        </li>
+                        <li>
+                            <strong>Illegal Use:</strong> You may not use the service for any unlawful purpose or in violation of any applicable laws or regulations.
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Copyright and Intellectual Property</h2>
+                    <p>
+                        All content, data, and materials provided by Research Stalker are protected by copyright and intellectual property laws.
+                        The creators retain all rights to the content, and any use, distribution, or modification of the content requires explicit permission.
+                    </p>
+                    <p>
+                        If you wish to use or distribute any content from Research Stalker, you must contact the creators at [Insert Contact Information] to obtain written consent.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>User Responsibilities</h2>
+                    <p>
+                        As a user of Research Stalker, you agree to:
+                    </p>
+                    <ul>
+                        <li>Use the service only for lawful and non-commercial purposes.</li>
+                        <li>Respect the intellectual property rights of the creators and other users.</li>
+                        <li>Not attempt to reverse-engineer, decompile, or exploit the service.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Limitation of Liability</h2>
+                    <p>
+                        Research Stalker and its creators are not liable for any damages or losses resulting from your use of the service.
+                        This includes, but is not limited to, direct, indirect, incidental, or consequential damages.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Changes to These Terms</h2>
+                    <p>
+                        We reserve the right to update or modify these Terms of Service at any time. Any changes will be posted on this page with an updated "Last Updated" date.
+                        Your continued use of the service after changes are made constitutes your acceptance of the revised terms.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Contact Us</h2>
+                    <p>
+                        If you have any questions or concerns about these Terms of Service, please contact us at:
+                    </p>
+                    <p>
+                        <strong>Email:</strong> [Insert Email Address]<br />
+                        <strong>Address:</strong> [Insert Physical Address]
+                    </p>
+                </section>
+            </main>
+            <Footer />
+        </div>
+    );
+};
+
+export default TermsOfService;

@@ -1,0 +1,140 @@
+.filters-sidebar {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 420px;
+  height: calc(100vh - 150px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px 0 0 16px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow-y: auto;
+  user-select: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: -6px 0 16px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #eaeaea;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #003366, #014e9f);
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #014e9f, #003366);
+  }
+
+  .filter-window-header {
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    .bold-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #003366;
+      user-select: none;
+      margin: 0;
+    }
+  }
+
+  .filter-window-content {
+    .metadata-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: rgba(1, 78, 159, 0.1);
+        border-radius: 6px;
+      }
+
+      .metadata-key {
+        color: #003366;
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0;
+        user-select: none;
+      }
+
+      .metadata-value {
+        color: #333;
+        font-size: 15px;
+        font-weight: 400;
+        margin: 4px 0 0 0;
+        user-select: none;
+        width: 100%;
+      }
+
+      &.full-width {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .search-btn {
+      background: #003366;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      display: inline-block;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      .reset-button-container {
+        display: flex;
+        justify-content: flex-end; // Aligns the button to the right
+        margin-top: 16px; // Adds some spacing above the button
+      }
+      &:hover {
+        background: #014e9f;
+        box-shadow: 0 4px 12px rgba(1, 78, 159, 0.4);
+        transform: scale(1.05);
+      }
+      &.smaller-reset-button {
+        padding: 6px 12px; // Smaller padding
+        font-size: 13px; // Smaller font size
+        border-radius: 6px; // Slightly smaller border radius
+        width: auto; // Remove full width to allow right alignment
+        i {
+          font-size: 16px; // Smaller icon size
+        }
+      }
+      &.reset-button {
+        background: #c82333;
+
+        &:hover {
+          background: #a71d2a;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .filters-sidebar {
+    width: 85%;
+    border-radius: 16px 0 0 16px;
+  }
+}

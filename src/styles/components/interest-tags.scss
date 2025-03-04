@@ -1,0 +1,40 @@
+/* Interest Tags */
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Updated interest-tag style to mimic the selected in graph style */
+.interest-tag {
+  background: transparent;
+  border: 1px solid #003366; /* Brand Color */
+  color: #003366;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.interest-tag:hover {
+  background: #003366; /* Brand Color on hover */
+  color: #fff;
+}
+
+.interest-tag .remove-interest {
+  background: none;
+  border: none;
+  color: #003366; /* Brand color when not hovering */
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s ease-in-out;
+}
+
+.interest-tag:hover .remove-interest {
+  color: #fff; /* White when hovering */
+}
