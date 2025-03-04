@@ -1,16 +1,16 @@
 FROM node:20-alpine
 
-WORKDIR /ResearchStalker-client
+WORKDIR /research_stalker_client
 
-COPY public/ /ResearchStalker-client/public
-COPY src/ /ResearchStalker-client/src
-COPY package.json /ResearchStalker-client/
+COPY public/ /research_stalker_client/public
+COPY src/ /research_stalker_client/src
+COPY package.json /research_stalker_client/
 
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3000
 
-CMD ["npm", "start", "--", "--port", "8080"]
+CMD ["npm", "start", "--", "--port", "3000"]
