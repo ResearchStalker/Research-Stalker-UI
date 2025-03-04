@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+/.idea
 # C extensions
 *.so
 
@@ -154,7 +154,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# pytype static type analyzer
+# pytype public type analyzer
 .pytype/
 
 # Cython debug symbols
@@ -169,3 +169,22 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+.gitsecret/keys/random_seed
+!*.secret
+scrapper/constants.py
+
+.idea
+scrapper/scrapper
+scrapper/proxies.txt
+scrapper/valid_proxies.txt
+client/node_modules
+client/package-lock.json
+scrapper/working_proxies.csv
+scrapper/find_scraps.py
+data_base/db
+data_base/constants.py
+client/node_modules
+client/package-lock.json
+data_base/db
+scrapper/scrapper
+data_base/constants.py
