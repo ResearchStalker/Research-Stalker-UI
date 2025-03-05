@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import '@mdi/font/css/materialdesignicons.min.css';
 import '../styles/components/researcher-window.scss';
@@ -48,6 +48,8 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [isSearchActive, setIsSearchActive] = useState(false);
+    const [menuIsOpen, setMenuIsOpen] = useState<boolean | undefined>(undefined);
+    const filterWindowRef = useRef<HTMLDivElement>(null);
 
     const combinedOptions = useMemo(() => {
         const researcherOptions = nodes.map((nd) => ({
@@ -96,7 +98,27 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
         if (onBFSRequest) {
             onBFSRequest(String(node.id), connectionType, selectedConnection?.value || '');
         }
-    }, [node])
+    }, [node]);
+
+    // Add scroll event listener to close the dropdown when scrolling
+    useEffect(() => {
+        const handleScroll = () => {
+            if (menuIsOpen) {
+                setMenuIsOpen(false);
+            }
+        };
+
+        const filterWindow = filterWindowRef.current;
+        if (filterWindow) {
+            filterWindow.addEventListener('scroll', handleScroll);
+        }
+
+        return () => {
+            if (filterWindow) {
+                filterWindow.removeEventListener('scroll', handleScroll);
+            }
+        };
+    }, [menuIsOpen]);
 
     if (!isVisible) {
         return null;
@@ -120,11 +142,13 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
         const newOption = { value: inputValue, label: inputValue };
         setSelectedConnection(newOption);
     };
+    
     const handleClearSearch = () => {
         setIsSearchActive(false);
         setSelectedConnection(null);
         onBFSRequest?.(String(node.id), connectionType, ''); // Trigger a reset in the parent component
     };
+    
     const getFilteredOptions = () => {
         const group = combinedOptions.find(
             (g) =>
@@ -242,7 +266,10 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
     };
 
     return (
-        <div className={`filter-window ${isOpen ? 'open' : ''}`}>
+        <div 
+            className={`filter-window ${isOpen ? 'open' : ''}`} 
+            ref={filterWindowRef}
+        >
             <div className="filter-window-header">
                 <div className="header-top">
                     <h2 className="bold-title">Researcher Details</h2>
@@ -327,6 +354,20 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
                                 formatCreateLabel={(inputValue) => `Search "${inputValue}"`}
                                 noOptionsMessage={({ inputValue }) => `No matches found for "${inputValue}"`}
                                 isValidNewOption={() => true}
+                                classNamePrefix="react-select"
+                                menuPortalTarget={document.body}
+                                maxMenuHeight={150}
+                                menuPosition="fixed"
+                                menuPlacement="auto"
+                                menuIsOpen={menuIsOpen}
+                                onMenuOpen={() => setMenuIsOpen(true)}
+                                onMenuClose={() => setMenuIsOpen(false)}
+                                styles={{
+                                    menuPortal: (base) => ({
+                                        ...base,
+                                        zIndex: 9999
+                                    })
+                                }}
                             />
                         </div>
 
@@ -345,6 +386,8 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
                     </div>
                 )}
             </div>
+            
+            {bfsPath && renderBfsPath()}
         </div>
     );
 };

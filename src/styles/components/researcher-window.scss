@@ -3,7 +3,7 @@
   top: 80px;
   left: -420px; /* Start off-screen */
   width: 420px;
-  max-height: 800px;
+  max-height: 70vh;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   padding: 24px;
@@ -14,6 +14,10 @@
   overflow-y: auto;
   user-select: none;
   transition: left 0.3s ease-in-out; /* Transition for the left property */
+  
+  @media (min-width: 1600px) {
+    max-height: 80vh;
+  }
 
   &.open {
     left: 0; /* Slide in to the screen */
@@ -55,11 +59,15 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
     .bold-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: #003366;
       user-select: none;
       margin: 0;
+
+      @media (min-width: 1600px) {
+        font-size: 20px; 
+      }
     }
 
     .close-button {
@@ -92,13 +100,18 @@
       border: 1px solid transparent;
       cursor: pointer;
       color: #003366;
-      font-size: 20px;
-      padding: 10px 16px;
+      font-size: 18px; 
+      padding: 8px 12px; 
       transition: all 0.3s ease-in-out;
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
+  
+      @media (min-width: 1600px) {
+        padding: 10px 16px; 
+        font-size: 20px;
+      }
 
       &:hover {
         background: rgba(0, 51, 102, 0.1);
@@ -232,7 +245,8 @@
         gap: 6px;
 
         .connection-select {
-          width: 100%;
+          position: relative;
+          z-index: 10; 
         }
       }
 
@@ -290,6 +304,15 @@
   }
 }
 
+.connection-select {
+  z-index: 1500; 
+}
+
+.css-26l3qy-menu,
+.css-1n7v3ny-menu {
+  z-index: 9999 !important;
+}
+
 .interest-tags {
   display: flex;
   flex-wrap: wrap;
@@ -312,3 +335,8 @@
     }
   }
 }
+
+.react-select__menu-portal {
+  z-index: 9999 !important;
+}
+
