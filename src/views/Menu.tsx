@@ -38,10 +38,10 @@ const Menu: React.FC = () => {
                 const timer = setTimeout(() => {
                     timedOut = true;
                     navigate('/network', { state: { networkData: null, loading: true } });
-                }, 1000);
+                }, 10000);
 
                 try {
-                    const recursivity = 0;
+                    const recursivity = 1;
                     const response = await getNetwork(profileData.author_id, profileData.source, recursivity);
                     clearTimeout(timer);
                     navigate('/network', { state: { networkData: response, loading: false } });
