@@ -74,7 +74,7 @@ export default class ForceGraphNode extends PureComponent<ForceGraphNodeProps> {
             ...spreadable
         } = this.props;
 
-        const fullLabel = node.name || node.label || node.id || '';
+        const fullLabel = node.name || node.id || '';
         const labelParts = ForceGraphNode.getShortLabel(fullLabel);
 
         // Adjust the circle radius based on the label length

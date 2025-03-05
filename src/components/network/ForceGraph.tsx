@@ -164,7 +164,7 @@ export default class ForceGraph extends PureComponent<ForceGraphProps, ForceGrap
 
     static getNodePositions(simulation: any) {
         return simulation.nodes().reduce(
-            (obj: Record<string, { cx: number; cy: number }>, node: NodeDatum) => {
+            (obj: Record<string, { cx: number | undefined; cy: number | undefined }>, node: NodeDatum) => {
                 obj[forceUtils.nodeId(node)] = {
                     cx: node.fx || node.x,
                     cy: node.fy || node.y,
