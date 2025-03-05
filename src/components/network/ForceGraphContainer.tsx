@@ -154,12 +154,13 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                 }
 
                 const strokeColor = linkHighlighted ? '#ff6600' : '#ccc';
-
+                const strokeWidth = linkHighlighted ? 3 : 1;
                 return (
                     <ForceGraphLink
                         key={index}
                         link={link}
                         stroke={strokeColor}
+                        stroke-width={strokeWidth}
                     />
                 );
             })}
