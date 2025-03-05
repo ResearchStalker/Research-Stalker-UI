@@ -1,8 +1,8 @@
 /* General Layout */
-research-network-container {
+.research-network-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
 }
 
 /* Graph fills the entire viewport */
