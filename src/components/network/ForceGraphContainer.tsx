@@ -119,8 +119,9 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                     ? affiliationColors[node.affiliation] ?? '#666'
                     : '#ccc';
 
-                const stroke = isSelectedNode ? 'darkred' : undefined;
-                const strokeWidth =  isSelectedNode ? '3' : undefined;
+                const stroke = isSelectedNode ? 'darkblue' : undefined;
+                const strokeWidth =  isSelectedNode ? '3px' : undefined;
+                const transformScale = isSelectedNode ? 'scale(1.1)' : undefined;
                 return (
                     <ForceGraphNode
                         key={node.id}
@@ -128,6 +129,8 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                         fill={fillColor}
                         opacity={opacity}
                         stroke={stroke}
+                        stroke-width={strokeWidth}
+                        transform={transformScale}
                         showLabel
                     />
                 );

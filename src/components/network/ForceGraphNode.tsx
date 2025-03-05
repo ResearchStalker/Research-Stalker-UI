@@ -15,6 +15,7 @@ interface ForceGraphNodeProps {
     opacity?: number;
     stroke?: string;
     strokeWidth?: number;
+    transform?: string;
     onClick?: (event: React.MouseEvent<SVGCircleElement>, node: NodeDatum) => void;
 }
 
