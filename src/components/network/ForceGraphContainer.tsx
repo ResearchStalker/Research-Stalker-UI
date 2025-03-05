@@ -21,6 +21,7 @@ interface ForceGraphContainerProps {
         connectionType: 'Affiliation' | 'researcher';
         selectedValue: string;
     } | null;
+    gridVisible?: boolean;
 }
 
 const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
@@ -32,7 +33,8 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                                                                      onPathFound,
                                                                      selectedNode,
                                                                      onNodeSelect,
-                                                                     bfsRequest
+                                                                     bfsRequest,
+                                                                     gridVisible
                                                                  }) => {
     const [bfsPath, setBfsPath] = useState<string[] | null>(null);
 
@@ -108,6 +110,7 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
             onDeselectNode={handleDeselectNode}
             highlightDependencies
             bfsPath={bfsPath}
+            gridVisible={gridVisible}
         >
             {nodes.map((node) => {
                 const isBFSHighlighted = bfsPath?.includes(String(node.id)) || false;
@@ -120,7 +123,7 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                     : '#ccc';
 
                 const stroke = isSelectedNode ? 'darkblue' : undefined;
-                const strokeWidth =  isSelectedNode ? '3px' : undefined;
+                const strokeWidth =  isSelectedNode ? 3 : undefined;
                 const transformScale = isSelectedNode ? 'scale(1.1)' : undefined;
                 return (
                     <ForceGraphNode
@@ -129,7 +132,7 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                         fill={fillColor}
                         opacity={opacity}
                         stroke={stroke}
-                        stroke-width={strokeWidth}
+                        strokeWidth={strokeWidth}
                         transform={transformScale}
                         showLabel
                     />
@@ -160,7 +163,7 @@ const ForceGraphContainer: React.FC<ForceGraphContainerProps> = ({
                         key={index}
                         link={link}
                         stroke={strokeColor}
-                        stroke-width={strokeWidth}
+                        strokeWidth={strokeWidth}
                     />
                 );
             })}

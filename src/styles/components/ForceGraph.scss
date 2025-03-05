@@ -5,15 +5,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
   position: relative;
   user-select: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .rv-force__interactive {
-  width: 100%;
-  height: 100%;
   overflow: visible;
   user-select: none;
   stroke: transparent;

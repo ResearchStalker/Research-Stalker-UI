@@ -8,6 +8,7 @@ import ZoomableSVGGroup from './ZoomableSVGGroup';
 import { DEFAULT_SIMULATION_PROPS } from '../../propTypes/simulation';
 import { NodeDatum } from "../../propTypes/node";
 import { LinkDatum } from "../../propTypes/link";
+import CircularHalo from '../ui/CircularHalo';
 
 interface ZoomOptions {
     zoomSpeed?: number;
@@ -34,6 +35,7 @@ interface ForceGraphProps {
     showLabels?: boolean;
     width?: number;
     height?: number;
+    gridVisible?: boolean;
 }
 
 interface ForceGraphState {
@@ -212,13 +214,15 @@ export default class ForceGraph extends PureComponent<ForceGraphProps, ForceGrap
         const { linkPositions, nodePositions } = this.state;
 
         return (
-            <svg className={`rv-force__svg ${className}`}>
+            <div>
+                <CircularHalo/>
+                <svg className={`rv-force__svg ${className}`}>
+                
                 <ZoomableSVGGroup
-                    width={width || 800}
-                    height={height || 600}
                     disabled={false}
                     onZoom={(scale, event) => this.onZoom(scale, event)}
                     onPan={(x, y, event) => this.onPan(x, y, event)}
+                    gridVisible={this.props.gridVisible}
                     {...zoomOptions}
                 >
                     <g className="rv-force__links">
@@ -243,6 +247,8 @@ export default class ForceGraph extends PureComponent<ForceGraphProps, ForceGrap
                     </g>
                 </ZoomableSVGGroup>
             </svg>
+            </div>
+            
         );
     }
 }
