@@ -13,14 +13,24 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease;
   z-index: 1050;
+  width: 74px;
+  overflow: hidden;
 }
 
 /* Collapsed Toolbar */
 .toolbar.collapsed {
   padding: 8px;
-  width: auto;
+  width: 74px;
+}
+
+.toolbar.collapsed .toolbar-button {
+  opacity: 0.25;
+}
+
+.toolbar:not(.collapsed) {
+  width: 316px; /* Full width when expanded */
 }
 
 /* Toolbar Button Styles */
@@ -43,6 +53,26 @@
   font-weight: bold;
   flex-shrink: 0;
   position: relative;
+  overflow: clip;
+  transition: all 0.3s ease; /* Smooth transition for transform and opacity */
+
+}
+
+.toolbar-toggle-button {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 48px;
+  min-width: 48px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #003366;
+  cursor: pointer;
+  z-index: 1060;
 }
 
 /* Hover effect */
@@ -87,9 +117,14 @@
 /* Icon Styling */
 .toolbar-button i {
   font-size: 26px;
-  width: 32px;
-  height: 32px;
+  /*width: 32px;
+  height: 32px;*/
   text-align: center;
+}
+
+.toolbar-toggle-button i{
+  font-size: 26px,;
+
 }
 
 /* Grid Overlay */

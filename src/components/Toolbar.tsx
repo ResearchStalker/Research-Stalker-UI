@@ -18,12 +18,11 @@ const Toolbar: React.FC<{ toggleFilters: () => void; graphView: boolean }> = ({ 
             <div className={`grid-overlay ${gridActive ? 'active' : ''}`}></div>
 
             <div className={`toolbar ${collapsed ? 'collapsed' : ''}`}>
-                <button className="toolbar-button" onClick={() => setCollapsed(!collapsed)}>
+                <button className="toolbar-toggle-button" onClick={() => setCollapsed(!collapsed)}>
                     <i className={`mdi ${collapsed ? 'mdi-chevron-right' : 'mdi-chevron-left'}`}></i>
                 </button>
-
-                {!collapsed && (
                     <>
+                        
                         <button className="toolbar-button">
                             <i className="mdi mdi-home"></i>
                         </button>
@@ -53,7 +52,6 @@ const Toolbar: React.FC<{ toggleFilters: () => void; graphView: boolean }> = ({ 
                             </button>
                         )}
                     </>
-                )}
             </div>
         </div>
     );
