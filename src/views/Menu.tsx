@@ -70,6 +70,7 @@ const Menu: React.FC = () => {
 
             <form onSubmit={handleSearch} className="search-container">
                 <input
+                    id="researcher-search-input"
                     type="text"
                     className="search-input"
                     placeholder="Search Researchers..."
