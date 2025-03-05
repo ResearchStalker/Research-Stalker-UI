@@ -22,7 +22,7 @@
 
 .rv-force__node {
   cursor: pointer;
-  transition: transform 0.3s ease-in-out, stroke 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, all 0.3s ease-in-out;
   user-select: none;
   stroke: transparent;
   stroke-width: 2px;
@@ -40,7 +40,7 @@
   font-weight: bold;
   fill: white;
   user-select: none;
-  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, all 0.3s ease-in-out;
 }
 
 .rv-force__label:hover {
