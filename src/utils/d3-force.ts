@@ -12,6 +12,8 @@ import {
 } from 'd3-force';
 
 import setsEqual from './sets-equal';
+import { NodeDatum } from '../propTypes/node';
+import { LinkDatum } from '../propTypes/link';
 
 const ALPHA_FACTORS = [
     'alpha',
@@ -21,19 +23,6 @@ const ALPHA_FACTORS = [
     'velocityDecay',
 ] as const;
 
-interface NodeDatum extends SimulationNodeDatum {
-    id: string;
-    radius?: number;
-    fx?: number;
-    fy?: number;
-    affiliation?: string;
-}
-
-interface LinkDatum extends SimulationLinkDatum<NodeDatum> {
-    source: string | NodeDatum;
-    target: string | NodeDatum;
-    value?: number;
-}
 
 interface SimulationOptions {
     height?: number;

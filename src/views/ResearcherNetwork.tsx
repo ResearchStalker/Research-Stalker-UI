@@ -22,6 +22,7 @@ const ResearcherNetwork: React.FC = () => {
     const [selectedAffiliations, setSelectedAffiliations] = useState<string[]>([]);
     const [fieldsOfInterest, setFieldsOfInterest] = useState<string[]>([]);
     const [filtersVisible, setFiltersVisible] = useState<boolean>(false);
+    const [gridVisible, setGridVisible] = useState<boolean>(false);
     const [graphView, setGraphView] = useState<boolean>(true);
     const [selectedNode, setSelectedNode] = useState<NodeDatum | null>(null);
     const [bfsPath, setBfsPath] = useState<string[] | null>(null);
@@ -63,6 +64,10 @@ const ResearcherNetwork: React.FC = () => {
 
     const toggleFilters = () => {
         setFiltersVisible(!filtersVisible);
+    };
+
+    const toggleGrid = () => {
+        setGridVisible(!gridVisible);
     };
 
     const affiliationColors = useMemo(() => {
@@ -112,10 +117,11 @@ const ResearcherNetwork: React.FC = () => {
         setBfsRequest(null);
     };
 
+
     return (
         <div className="research-network-container">
             <Navbar />
-            <Toolbar toggleFilters={toggleFilters} graphView={graphView} />
+            <Toolbar toggleFilters={toggleFilters} graphView={graphView} toggleGrid={toggleGrid}/>
 
             <div className="network-content">
                 {filtersVisible && (
@@ -144,6 +150,7 @@ const ResearcherNetwork: React.FC = () => {
                         onNodeSelect={handleNodeSelect}
                         bfsRequest={bfsRequest}
                         onPathFound={setBfsPath}
+                        gridVisible={gridVisible}
                     />
                 ) : (
                     <div className="loading-container">

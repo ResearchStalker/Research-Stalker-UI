@@ -20,6 +20,7 @@ interface InteractiveForceGraphProps {
     };
     labelAttr?: string;
     bfsPath?: string[] | null;
+    gridVisible?: boolean;
 }
 
 interface InteractiveForceGraphState {
@@ -184,6 +185,7 @@ export default class InteractiveForceGraph extends PureComponent<
         return (
             <ForceGraph
                 className={`rv-force__interactive`}
+                gridVisible={this.props.gridVisible}
                 {...spreadableProps}
             >
                 {Children.map(children, child => {

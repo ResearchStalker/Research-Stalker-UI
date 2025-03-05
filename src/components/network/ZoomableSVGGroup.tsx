@@ -8,6 +8,7 @@ interface ZoomableSVGGroupProps extends React.SVGProps<SVGGElement> {
     onZoom?: (scale: number, event: any) => void;
     onPan?: (x: number, y: number, event: any) => void;
     children?: ReactNode;
+    gridVisible?: boolean
 }
 
 interface ZoomableSVGGroupState {
@@ -29,7 +30,7 @@ export default class ZoomableSVGGroup extends PureComponent<ZoomableSVGGroupProp
         };
 
         this.zoomBehavior = d3.zoom<SVGSVGElement, unknown>()
-            .scaleExtent([0.5, 10])
+            .scaleExtent([0.5, 15])
             .filter((event) => {
                 // Prevent zooming on double-click
                 return !event.ctrlKey && event.type !== 'dblclick';
@@ -65,8 +66,43 @@ export default class ZoomableSVGGroup extends PureComponent<ZoomableSVGGroupProp
                 style={{ ...style, cursor: disabled ? 'default' : 'grab', pointerEvents: 'all' }}
                 transform={combinedTransform}
             >
-                <rect x={0} y={0} width={this.props.width} height={this.props.height} fillOpacity={0} />
+                <defs>
+                    <pattern 
+                        id="myGrid"     // Unique identifier
+                        width="30"      // Width of one grid cell
+                        height="30"     // Height of one grid cell
+                        patternUnits="userSpaceOnUse"  // Important for consistent sizing
+                    >
+                        {/* Vertical lines */}
+                        <path 
+                            d="M 30 0 L 0 0 0 30" 
+                            fill="none" 
+                            stroke="black" 
+                            strokeWidth="1"
+                        />
+                        {/* Horizontal lines */}
+                        <path 
+                            d="M 0 30 L 0 0 30 0" 
+                            fill="none" 
+                            stroke="black" 
+                            strokeWidth="1"
+                        />
+                    </pattern>
+                </defs>
+                <rect 
+                    width="400000px" 
+                    height="400000px" 
+                    x="-200000px"
+                    y="-200000px"
+                    fill="url(#myGrid)"
+                    style={{
+                        "transition" : "all 0.3s ease-in-out",
+                        zIndex: 0
+                    }}
+                    fillOpacity={this.props.gridVisible ? .2: 0}
+                />
                 {children}
+                
             </g>
         );
     }

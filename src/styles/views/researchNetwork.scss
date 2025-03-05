@@ -1,8 +1,8 @@
 /* General Layout */
-research-network-container {
+.research-network-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
 }
 
 /* Graph fills the entire viewport */
@@ -38,7 +38,6 @@ research-network-container {
   display: flex;
   flex-direction: column;
   position: relative; /* For absolute positioning of the sidebar */
-  padding: 20px; /* Add some padding */
 }
 
 /* Ensure the graph container takes up the remaining space */

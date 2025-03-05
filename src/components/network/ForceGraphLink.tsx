@@ -74,6 +74,7 @@ export default class ForceGraphLink extends PureComponent<ForceGraphLinkProps> {
             <line
                 strokeWidth={strokeWidth || Math.sqrt(link.value || 1)}
                 opacity={1}
+                style={{ transition : 'all 0.3s ease-in-out' }}
                 {...mutableProps}
             />
         );
