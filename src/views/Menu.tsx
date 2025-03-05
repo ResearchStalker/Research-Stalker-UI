@@ -22,6 +22,9 @@ const Menu: React.FC = () => {
                 return { author_id: match[1], source: 'research_gate' };
             }
         }
+        else {
+            return { author_id: url, source: 'dblp' };
+        }
         return null;
     };
 
