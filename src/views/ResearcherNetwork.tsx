@@ -34,33 +34,33 @@ const ResearcherNetwork: React.FC = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    /*
+        useEffect(() => {
+            if (location.state?.networkData) {
+                setData(location.state.networkData);
+            } else if (location.state?.loading) {
 
-    useEffect(() => {
-        if (location.state?.networkData) {
-            setData(location.state.networkData);
-        } else if (location.state?.loading) {
-
-        } else {
-            navigate('/');
-        }
-    }, [location.state, navigate]);
-
-    /* --LOCAL MODE--
-
-    eEffect(() => {
-        const fetchGraphData = async () => {
-            try {
-                const response = await fetch('/data/mock-data/demo-rec-1.json');
-                if (!response.ok) throw new Error('Failed to fetch network data');
-                const jsonData: GraphData = await response.json();
-                setData(jsonData);
-            } catch (error) {
-                console.error('Error fetching network data:', error);
-                setData(null);
+            } else {
+                navigate('/');
             }
-        };
-        fetchGraphData();
-    }, []);  */
+        }, [location.state, navigate]);
+    */
+         /*--LOCAL MODE--*/
+
+        useEffect(() => {
+            const fetchGraphData = async () => {
+                try {
+                    const response = await fetch('/data/mock-data/demo-rec-1.json');
+                    if (!response.ok) throw new Error('Failed to fetch network data');
+                    const jsonData: GraphData = await response.json();
+                    setData(jsonData);
+                } catch (error) {
+                    console.error('Error fetching network data:', error);
+                    setData(null);
+                }
+            };
+            fetchGraphData();
+        }, []);
 
     const toggleFilters = () => {
         setFiltersVisible(!filtersVisible);
