@@ -1,4 +1,5 @@
-// src/styles/views/menu.scss
+/* src/styles/views/menu.scss */
+
 .menu-container {
   display: flex;
   flex-direction: column;
@@ -84,4 +85,12 @@
   margin-top: 10px;
   text-align: center;
   font-style: italic;
+}
+.login-button {
+  @extend .search-button;
+  margin-top: 30px;
+  i {
+    font-size: 20px;
+    margin-right: 8px;
+  }
 }

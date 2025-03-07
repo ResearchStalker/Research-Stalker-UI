@@ -34,33 +34,35 @@ const ResearcherNetwork: React.FC = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    /*--ONLINE MODE--*/
 
     useEffect(() => {
         if (location.state?.networkData) {
             setData(location.state.networkData);
         } else if (location.state?.loading) {
-
         } else {
             navigate('/');
         }
-    }, [location.state, navigate]);
+        }, [location.state, navigate]);
 
-    /* --LOCAL MODE--
+    /*--LOCAL MODE--*/
+    /*
+        useEffect(() => {
+            const fetchGraphData = async () => {
+                try {
+                    const response = await fetch('/data/mock-data/demo-rec-1.json');
+                    if (!response.ok) throw new Error('Failed to fetch network data');
+                    const jsonData: GraphData = await response.json();
+                    setData(jsonData);
+                } catch (error) {
+                    console.error('Error fetching network data:', error);
+                    setData(null);
+                }
+            };
+            fetchGraphData();
+        }, []);
 
-    eEffect(() => {
-        const fetchGraphData = async () => {
-            try {
-                const response = await fetch('/data/mock-data/demo-rec-1.json');
-                if (!response.ok) throw new Error('Failed to fetch network data');
-                const jsonData: GraphData = await response.json();
-                setData(jsonData);
-            } catch (error) {
-                console.error('Error fetching network data:', error);
-                setData(null);
-            }
-        };
-        fetchGraphData();
-    }, []);  */
+     */
 
     const toggleFilters = () => {
         setFiltersVisible(!filtersVisible);

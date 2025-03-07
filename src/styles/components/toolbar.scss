@@ -2,7 +2,7 @@
 .toolbar {
   position: fixed;
   top: 10px;
-  right: 20px;
+  right: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -15,22 +15,22 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.5s ease;
   z-index: 1050;
-  width: 74px;
-  overflow: hidden;
+  width: 316px; /* Default width when expanded */
+  overflow: visible;
 }
 
 /* Collapsed Toolbar */
 .toolbar.collapsed {
+  width: 120px; /* Wider width when collapsed to fit the login button */
   padding: 8px;
-  width: 74px;
 }
 
 .toolbar.collapsed .toolbar-button {
   opacity: 0.25;
 }
 
-.toolbar:not(.collapsed) {
-  width: 316px; /* Full width when expanded */
+.toolbar.collapsed .toolbar-button.login-button {
+  opacity: 1; /* Ensure login button is always visible */
 }
 
 /* Toolbar Button Styles */
@@ -55,7 +55,6 @@
   position: relative;
   overflow: clip;
   transition: all 0.3s ease; /* Smooth transition for transform and opacity */
-
 }
 
 .toolbar-toggle-button {
@@ -117,12 +116,9 @@
 /* Icon Styling */
 .toolbar-button i {
   font-size: 26px;
-  /*width: 32px;
-  height: 32px;*/
   text-align: center;
 }
 
-.toolbar-toggle-button i{
-  font-size: 26px,;
-
+.toolbar-toggle-button i {
+  font-size: 26px;
 }
