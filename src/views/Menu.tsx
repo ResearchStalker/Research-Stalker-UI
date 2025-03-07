@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import '../styles/views/menu.scss';
-import { getNetwork } from '../service/DataBaseService';
+import { getNetwork } from '../service/ApiGatewayService';
 
 const Menu: React.FC = () => {
     const navigate = useNavigate();
