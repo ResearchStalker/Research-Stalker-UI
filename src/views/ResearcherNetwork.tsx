@@ -34,19 +34,19 @@ const ResearcherNetwork: React.FC = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    /*
-        useEffect(() => {
-            if (location.state?.networkData) {
-                setData(location.state.networkData);
-            } else if (location.state?.loading) {
+    /*--ONLINE MODE--*/
 
-            } else {
-                navigate('/');
-            }
+    useEffect(() => {
+        if (location.state?.networkData) {
+            setData(location.state.networkData);
+        } else if (location.state?.loading) {
+        } else {
+            navigate('/');
+        }
         }, [location.state, navigate]);
-    */
-         /*--LOCAL MODE--*/
 
+    /*--LOCAL MODE--*/
+    /*
         useEffect(() => {
             const fetchGraphData = async () => {
                 try {
@@ -61,6 +61,8 @@ const ResearcherNetwork: React.FC = () => {
             };
             fetchGraphData();
         }, []);
+
+     */
 
     const toggleFilters = () => {
         setFiltersVisible(!filtersVisible);
