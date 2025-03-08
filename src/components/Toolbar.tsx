@@ -1,34 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '@mdi/font/css/materialdesignicons.min.css';
 import '../styles/components/toolbar.scss';
-import { getUser } from '../service/ApiGatewayService';
-import {login, logout} from "../service/AuthService";
 
-
-const Toolbar: React.FC<{
+interface ToolbarProps {
     toggleFilters: () => void;
     graphView: boolean;
     toggleGrid: () => void;
-}> = ({ toggleFilters, graphView, toggleGrid }) => {
+    user: { id: string,
+        name:string,
+        surname:string,
+        email: string;
+        picture?: string } | null;
+    login: () => void;
+    logout: () => void;
+}
+
+const Toolbar: React.FC<ToolbarProps> = ({
+                                             toggleFilters,
+                                             graphView,
+                                             toggleGrid,
+                                             user,
+                                             login,
+                                             logout,
+                                         }) => {
     const [mapView, setMapView] = useState(false);
     const [collapsed, setCollapsed] = useState(false);
     const [gridActive, setGridActive] = useState(false);
     const [filtersActive, setFiltersActive] = useState(false);
-    const [user, setUser] = useState<{ email: string; picture?: string } | null>(null);
-
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userData = await getUser();
-                setUser({ email: userData.email, picture: userData.picture });
-            } catch (error) {
-                setUser(null);
-            }
-        };
-
-        fetchData();
-    }, []);
 
     const handleToggleFilters = () => {
         setFiltersActive((prev) => !prev);
@@ -43,8 +41,15 @@ const Toolbar: React.FC<{
     return (
         <div>
             <div className={`toolbar ${collapsed ? 'collapsed' : ''}`}>
-                <button className="toolbar-toggle-button" onClick={() => setCollapsed(!collapsed)}>
-                    <i className={`mdi ${collapsed ? 'mdi-chevron-right' : 'mdi-chevron-left'}`}></i>
+                <button
+                    className="toolbar-toggle-button"
+                    onClick={() => setCollapsed(!collapsed)}
+                >
+                    <i
+                        className={`mdi ${
+                            collapsed ? 'mdi-chevron-right' : 'mdi-chevron-left'
+                        }`}
+                    ></i>
                 </button>
 
                 <button className="toolbar-button">
@@ -52,12 +57,18 @@ const Toolbar: React.FC<{
                 </button>
 
                 {/* Toggle Grid Background */}
-                <button className={`toolbar-button ${gridActive ? 'active' : ''}`} onClick={handleToggleGrid}>
+                <button
+                    className={`toolbar-button ${gridActive ? 'active' : ''}`}
+                    onClick={handleToggleGrid}
+                >
                     <i className="mdi mdi-grid"></i>
                 </button>
 
                 {/* Toggle Filters */}
-                <button className={`toolbar-button ${filtersActive ? 'active' : ''}`} onClick={handleToggleFilters}>
+                <button
+                    className={`toolbar-button ${filtersActive ? 'active' : ''}`}
+                    onClick={handleToggleFilters}
+                >
                     <i className="mdi mdi-filter"></i>
                 </button>
 
@@ -78,14 +89,20 @@ const Toolbar: React.FC<{
                     <div className="toolbar-user">
                         {/* Display Profile Picture if available */}
                         {user.picture ? (
-                            <img src={user.picture} alt="User" className="toolbar-user-image" />
+                            <img
+                                src={user.picture}
+                                alt="User"
+                                className="toolbar-user-image"
+                            />
                         ) : (
                             <i className="mdi mdi-account-circle toolbar-user-icon"></i>
                         )}
 
                         {/* Display User Email */}
                         <span className="toolbar-user-name">{user.email}</span>
-
+                        <span className="toolbar-user-name">{user.name}</span>
+                        <span className="toolbar-user-name">{user.surname}</span>
+                        <span className="toolbar-user-name">{user.id}</span>
 
                         {/* Logout Button */}
                         <button className="toolbar-button" onClick={logout} title="Logout">
@@ -97,7 +114,6 @@ const Toolbar: React.FC<{
                         <i className="mdi mdi-login"></i>
                     </button>
                 )}
-
             </div>
         </div>
     );

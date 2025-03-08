@@ -11,9 +11,20 @@ import { NodeDatum } from '../propTypes/node';
 import { LinkDatum } from '../propTypes/link';
 import ForceGraphContainer from '../components/network/ForceGraphContainer';
 
+import { getUser } from '../service/ApiGatewayService';
+import { login, logout } from '../service/AuthService';
+
 interface GraphData {
     nodes: NodeDatum[];
     links: LinkDatum[];
+}
+
+interface UserData {
+    id: string,
+    name: string,
+    surname: string,
+    email: string;
+    picture?: string;
 }
 
 const ResearcherNetwork: React.FC = () => {
@@ -32,37 +43,64 @@ const ResearcherNetwork: React.FC = () => {
         selectedValue: string;
     } | null>(null);
 
+
+    const [user, setUser] = useState<UserData | null>(null);
+
     const location = useLocation();
     const navigate = useNavigate();
-    /*--ONLINE MODE--*/
 
+    // --------------------------------------
+    // 1) Fetch the user data
+    // --------------------------------------
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const userData = await getUser();
+                setUser({
+                    id: userData.id,
+                    name: userData.name,
+                    surname: userData.surname,
+                    email: userData.email,
+                    picture: userData.picture
+                });
+            } catch (error) {
+                // If failed or not logged in, set user to null
+                setUser(null);
+            }
+        };
+        fetchUser();
+    }, []);
+
+    // --------------------------------------
+    // 2) Fetch or set up the network data
+    // --------------------------------------
     useEffect(() => {
         if (location.state?.networkData) {
             setData(location.state.networkData);
         } else if (location.state?.loading) {
+            // Handle a loading state if needed
         } else {
+            // If no data and not loading, go back to home
             navigate('/');
         }
-        }, [location.state, navigate]);
+    }, [location.state, navigate]);
 
-    /*--LOCAL MODE--*/
-    /*
-        useEffect(() => {
-            const fetchGraphData = async () => {
-                try {
-                    const response = await fetch('/data/mock-data/demo-rec-1.json');
-                    if (!response.ok) throw new Error('Failed to fetch network data');
-                    const jsonData: GraphData = await response.json();
-                    setData(jsonData);
-                } catch (error) {
-                    console.error('Error fetching network data:', error);
-                    setData(null);
-                }
-            };
-            fetchGraphData();
-        }, []);
-
-     */
+    /* -- (Optional) Local mode example
+    useEffect(() => {
+      const fetchGraphData = async () => {
+        try {
+          const response = await fetch('/data/mock-data/demo-rec-1.json');
+          if (!response.ok) throw new Error('Failed to fetch network data');
+          const jsonData: GraphData = await response.json();
+          setData(jsonData);
+        } catch (error) {
+          console.error('Error fetching network data:', error);
+          setData(null);
+        }
+      };
+      fetchGraphData();
+    }, []);
+    */
 
     const toggleFilters = () => {
         setFiltersVisible(!filtersVisible);
@@ -103,7 +141,11 @@ const ResearcherNetwork: React.FC = () => {
         setBfsRequest(null);
     }, []);
 
-    const handleBFSRequest = (startId: string, connectionType: 'Affiliation' | 'researcher', selectedValue: string) => {
+    const handleBFSRequest = (
+        startId: string,
+        connectionType: 'Affiliation' | 'researcher',
+        selectedValue: string
+    ) => {
         if (selectedValue === '') {
             setBfsPath(null);
             setBfsRequest(null);
@@ -119,11 +161,19 @@ const ResearcherNetwork: React.FC = () => {
         setBfsRequest(null);
     };
 
-
     return (
         <div className="research-network-container">
             <Navbar />
-            <Toolbar toggleFilters={toggleFilters} graphView={graphView} toggleGrid={toggleGrid}/>
+
+            {/* 3) Pass the user & auth functions into Toolbar as props */}
+            <Toolbar
+                toggleFilters={toggleFilters}
+                graphView={graphView}
+                toggleGrid={toggleGrid}
+                user={user}
+                login={login}
+                logout={logout}
+            />
 
             <div className="network-content">
                 {filtersVisible && (
@@ -165,7 +215,6 @@ const ResearcherNetwork: React.FC = () => {
                             </p>
                         </div>
                     </div>
-
                 )}
             </div>
 
@@ -181,6 +230,7 @@ const ResearcherNetwork: React.FC = () => {
                     onBFSRequest={handleBFSRequest}
                 />
             )}
+
             <Footer />
         </div>
     );
