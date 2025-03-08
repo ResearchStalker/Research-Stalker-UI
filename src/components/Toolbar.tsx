@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '@mdi/font/css/materialdesignicons.min.css';
 import '../styles/components/toolbar.scss';
 
-const Toolbar: React.FC<{
+interface ToolbarProps {
     toggleFilters: () => void;
     toggleGrid: () => void;
     gridActive: boolean;
     filtersActive: boolean;
-}> = ({ toggleFilters, toggleGrid, gridActive, filtersActive }) => {
+    activeDropdown?: string | null;
+    onDropdownToggle?: (name: string, isOpen: boolean) => void;
+}
+
+const Toolbar: React.FC<ToolbarProps> = ({ 
+    toggleFilters, 
+    toggleGrid, 
+    gridActive, 
+    filtersActive,
+    activeDropdown,
+    onDropdownToggle
+}) => {
     const [collapsed, setCollapsed] = useState(false);
+    
+    // Close any toolbar dropdowns if user profile is opened
+    useEffect(() => {
+        if (activeDropdown === 'userProfile' && filtersActive) {
+            toggleFilters();
+        }
+    }, [activeDropdown, filtersActive, toggleFilters]);
 
     const handleToggleFilters = () => {
+        // Notify the parent when filters are toggled
+        if (onDropdownToggle) {
+            onDropdownToggle('filters', !filtersActive);
+        }
         toggleFilters();
     };
 
@@ -21,7 +43,7 @@ const Toolbar: React.FC<{
     return (
         <div className={`toolbar ${collapsed ? 'collapsed' : ''}`}>
 
-            {/*
+                {/*
             <button className="toolbar-toggle-button" onClick={() => setCollapsed(!collapsed)}>
                 <i className={`mdi ${collapsed ? 'mdi-chevron-right' : 'mdi-chevron-left'}`}></i>
             </button>
@@ -32,7 +54,6 @@ const Toolbar: React.FC<{
             </button>
             */}
 
-            {/* Toggle Grid Background */}
             <button
                 className={`toolbar-button ${gridActive ? 'active' : ''}`}
                 onClick={handleToggleGrid}
@@ -41,7 +62,6 @@ const Toolbar: React.FC<{
                 <i className="mdi mdi-grid"></i>
             </button>
 
-            {/* Toggle Filters */}
             <button
                 className={`toolbar-button ${filtersActive ? 'active' : ''}`}
                 onClick={handleToggleFilters}

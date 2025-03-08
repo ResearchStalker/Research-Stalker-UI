@@ -110,7 +110,7 @@ const PrivacyPolicy: React.FC = () => {
                         If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
                     </p>
                     <p>
-                        <strong>Email:</strong> [Email Address]<br />
+                        <strong>Email:</strong>  contact@linkedscholar.io<br />
                         <strong>Address:</strong> [Physical Address]
                     </p>
                 </section>

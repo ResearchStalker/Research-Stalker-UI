@@ -5,8 +5,6 @@ import Footer from '../components/Footer';
 import '../styles/views/menu.scss';
 import { getNetwork, getUser } from '../service/ApiGatewayService';
 
-
-
 const Menu: React.FC = () => {
     const navigate = useNavigate();
 
@@ -32,8 +30,7 @@ const Menu: React.FC = () => {
         fetchUser();
     }, []);
 
-
-    // Extract profile data from the provided URL
+    // Extract profile data from the provided URL (unchanged from original)
     const extractProfileData = (url: string) => {
         if (url.match(/scholar\.google\.[a-z.]+/)) {
             const match = url.match(/[?&]user=([^&]+)/);
@@ -52,7 +49,7 @@ const Menu: React.FC = () => {
         return null;
     };
 
-    // Handle the search form submission
+    // Handle the search form submission (unchanged from original)
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
@@ -98,8 +95,9 @@ const Menu: React.FC = () => {
             <div className="menu-content">
                 <header className="menu-header">
                     <div className="title-container">
-                        <h1 className="menu-title">Linked Scholar </h1>
-                        <p className="menu-version"> v0.2</p>
+                        <span className="title-linked">Linked</span>
+                        <span className="title-scholar">Scholar</span>
+                        <span className="menu-version">v0.2</span>
                     </div>
                 </header>
                 

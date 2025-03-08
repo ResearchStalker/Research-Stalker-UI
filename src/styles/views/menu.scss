@@ -1,19 +1,16 @@
-/* src/styles/views/menu.scss */
-
-/* Import Google Fonts - Roboto */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+/* Import a selection of professional fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 
 .menu-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background: #ffffff; /* Solid white background */
+  min-height: 100vh;
+  background: #ffffff;
   color: #333;
-  font-family: 'Roboto', sans-serif; /* Professional font */
+  font-family: 'Inter', sans-serif; /* Changed to Inter as primary font */
 }
 
-/* Content container to push everything below navbar */
 .menu-content {
   display: flex;
   flex-direction: column;
@@ -26,41 +23,54 @@
   margin: 0 auto;
 }
 
-/* Header */
+/* Updated Header Styling */
 .menu-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.menu-title {
-  font-size: 52px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  font-family: 'Roboto', sans-serif; /* Match with the body font */
-  color: #003366;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
+/* New title container for better layout control */
+.title-container {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 5px;
 }
 
-.search-container-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
+/* Split title styling to match logo */
+.title-linked {
+  font-size: 48px;
+  font-weight: 500;
+  color: #003366;
+  margin-right: 8px;
+}
+
+.title-scholar {
+  font-size: 48px;
+  font-weight: 700;
+  color: #0066cc;
+}
+
+.menu-version {
+  font-size: 14px;
+  color: #888;
+  font-weight: 300;
+  margin-left: 10px;
+  position: relative;
+  top: 0px;
 }
 
 .search-info {
   font-size: 18px;
-  font-weight: 300; /* Lighter weight for elegance */
+  font-weight: 300;
   color: #555;
   margin-bottom: 30px;
   text-align: center;
   line-height: 1.6;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Search Box */
 .search-container {
   display: flex;
   flex-direction: column;
@@ -78,8 +88,8 @@
 
 .search-input {
   padding: 12px 16px;
-  font-size: 16px; /* Slightly smaller for more professional look */
-  font-family: 'Roboto', sans-serif; /* Match font family */
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
   border: 2px solid #ccc;
   border-radius: 8px;
   width: 100%;
@@ -96,7 +106,7 @@
 .search-button {
   padding: 12px 24px;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500; 
   color: white;
   background-color: #003366;
@@ -117,35 +127,24 @@
   transform: translateY(0);
 }
 
-.title-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.menu-version {
-  font-size: 14px;
-  color: #888;
-  font-weight: 300;
-  position: absolute;
-  right: -20px;
-  top: 10px;
-}
-
-/* Error Message */
 .error-message {
   color: #ff0000;
   font-size: 14px;
   margin-top: 10px;
   text-align: center;
   font-style: italic;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .menu-title {
+  .title-linked, .title-scholar {
     font-size: 36px;
+  }
+  
+  .menu-version {
+    font-size: 12px;
+    top: -3px;
   }
   
   .search-info {
@@ -161,11 +160,5 @@
   .search-button {
     font-size: 16px;
     padding: 10px 20px;
-  }
-  
-  .menu-version {
-    font-size: 12px;
-    right: -15px;
-    top: 8px;
   }
 }

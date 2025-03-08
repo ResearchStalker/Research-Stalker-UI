@@ -91,7 +91,7 @@ const TermsOfService: React.FC = () => {
                         If you have any questions or concerns about these Terms of Service, please contact us at:
                     </p>
                     <p>
-                        <strong>Email:</strong> [Insert Email Address]<br />
+                        <strong>Email:</strong>  contact@linkedscholar.io<br />
                         <strong>Address:</strong> [Insert Physical Address]
                     </p>
                 </section>

@@ -24,6 +24,23 @@ interface FilterWindowProps {
     ) => void;
 }
 
+// Detect if it's a URL
+const isURL = (str: string): boolean => {
+    try {
+      new URL(str);
+      return true;
+    } catch {
+      return str.startsWith('http://') || str.startsWith('https://') || 
+             str.includes('.edu') || str.includes('.com') || 
+             str.includes('.org') || str.includes('.net');
+    }
+  };
+
+const formatKeyName = (key: string): string => {
+    let formattedKey = key.replace(/_/g, ' ');
+    
+    return formattedKey.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
 
 const capitalizeFirstLetter = (text: string) =>
     text.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -196,14 +213,14 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
                             const formattedKey = capitalizeFirstLetter(key);
                             if (key.toLowerCase() === 'name') {
                                 return (
-                                    <div key={key} className="metadata-item">
-                                        <p className="metadata-key">{formattedKey}:&nbsp;</p>
-                                        <p className="metadata-value">
-                                            {capitalizeFirstLetter(String(value))}
-                                        </p>
-                                    </div>
+                                  <div key={key} className="metadata-item">
+                                    <p className="metadata-key">{formatKeyName(key)}:&nbsp;</p>
+                                    <p className="metadata-value">
+                                      {capitalizeFirstLetter(String(value))}
+                                    </p>
+                                  </div>
                                 );
-                            }
+                              }
                             if (key.toLowerCase().includes('interest')) {
                                 const interests = String(value)
                                     .split(',')
@@ -212,11 +229,12 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
                                 if (interests.length === 0) return null;
                                 return (
                                     <div key={key} className="metadata-item full-width">
-                                        <p className="metadata-key">{formattedKey}:</p>
+                                        <p className="metadata-key">{formatKeyName(key)}:&nbsp;</p>
+
                                         <div className="interest-tags">
                                             {interests.map((interest, index) => (
                                                 <span key={index} className="interest-tag">
-                          {interest}
+                                                    {interest}
                                                     {onAddInterest && (
                                                         <button
                                                             className="remove-interest"
@@ -233,10 +251,22 @@ const ResearcherWindow: React.FC<FilterWindowProps> = ({
                             }
                             return (
                                 <div key={key} className="metadata-item">
-                                    <p className="metadata-key">{formattedKey}:&nbsp;</p>
+                                    <p className="metadata-key">{formatKeyName(key)}:&nbsp;</p>
+
+                                    {isURL(String(value)) ? (
+                                    <a 
+                                        href={String(value).startsWith('http') ? String(value) : `https://${String(value)}`} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="metadata-value-link"
+                                    >
+                                        {String(value)}
+                                    </a>
+                                    ) : (
                                     <p className="metadata-value">
                                         {capitalizeFirstLetter(String(value))}
                                     </p>
+                                    )}
                                 </div>
                             );
                         })}

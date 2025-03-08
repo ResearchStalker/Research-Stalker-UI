@@ -1,4 +1,4 @@
-/* Navbar */
+/* src/styles/components/navbar.scss */
 .research-navbar {
   padding: 15px 20px;
   width: 100%;
@@ -6,12 +6,12 @@
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  background: transparent; /* Transparent background */
-  position: fixed; /* Keeps navbar fixed at the top */
+  background: transparent;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Ensures navbar is above everything */
+  z-index: 1000;
 }
 
 .navbar-left {
@@ -26,27 +26,48 @@
 }
 
 .brand-link {
-  text-decoration: none; /* Ensure no underline */
-  color: inherit; /* Maintain original text color */
+  text-decoration: none;
+  color: inherit;
 }
 
 .brand-link:hover {
-  text-decoration: none; /* Prevent underline on hover */
+  text-decoration: none;
 }
 
-/* Brand Name */
-.brand-name {
-  font-weight: 700;
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
+.brand-title-container {
+  display: flex;
+  align-items: baseline;
+  user-select: none;
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+}
+
+.brand-title-linked {
+  font-size: 21px;
+  font-weight: 500;
   color: #003366;
-  padding: 8px 16px; /* Add padding for better spacing */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
-  user-select: none; /* Prevent text selection */
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
+  letter-spacing: -0.5px;
+  margin-right: 4px;
+  user-select: none;
+}
+
+.brand-title-scholar {
+  font-size: 21px;
+  font-weight: 700;
+  color: #0066cc;
+  letter-spacing: -0.5px;
+  user-select: none;
+}
+
+.brand-version {
+  font-size: 12px;
+  color: #888;
+  font-weight: 300;
+  margin-left: 6px;
+  position: relative;
+  top: -2px;
+  user-select: none;
 }
 
 /* Responsive adjustments */
@@ -55,7 +76,11 @@
     padding: 10px 15px;
   }
   
-  .brand-name {
-    font-size: 18px;
+  .brand-title-linked, .brand-title-scholar {
+    font-size: 20px;
+  }
+  
+  .brand-version {
+    font-size: 10px;
   }
 }

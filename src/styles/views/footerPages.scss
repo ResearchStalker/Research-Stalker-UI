@@ -1,9 +1,13 @@
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* Page Container: Ensures Full Height and Proper Layout */
 .page-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Full viewport height */
   background-color: #f9f9f9; /* Light background for better readability */
+  font-family: 'Inter', sans-serif; /* Updated to Inter font */
 }
 
 /* Main Content: Expands to push other elements down */
@@ -18,9 +22,8 @@
 .footer-page-title {
   font-size: 36px; /* Larger font size for emphasis */
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
   color: #003366;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px; /* Added spacing below the title */
@@ -47,6 +50,7 @@ section {
     margin-bottom: 15px;
     border-bottom: 2px solid #003366; /* Underline for section headings */
     padding-bottom: 10px; /* Spacing between heading and content */
+    font-family: 'Inter', sans-serif;
   }
 
   p {
@@ -54,6 +58,7 @@ section {
     color: #555;
     line-height: 1.8; /* Increased line height for better readability */
     margin-bottom: 15px; /* Spacing between paragraphs */
+    font-family: 'Inter', sans-serif;
   }
 
   ul {
@@ -66,6 +71,7 @@ section {
       color: #555;
       line-height: 1.8;
       margin-bottom: 10px; /* Spacing between list items */
+      font-family: 'Inter', sans-serif;
     }
   }
 }
@@ -140,6 +146,7 @@ section {
     font-weight: 600;
     color: #003366;
     margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
   }
 
   p {
@@ -147,6 +154,7 @@ section {
     color: #555;
     line-height: 1.6; /* Improved readability */
     margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
   }
 
   ul {
@@ -159,6 +167,7 @@ section {
       color: #555;
       line-height: 1.6;
       margin-bottom: 8px; /* Spacing between list items */
+      font-family: 'Inter', sans-serif;
     }
   }
 }
@@ -211,10 +220,17 @@ section {
     color: white;
     text-decoration: none;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
-
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Inter', sans-serif;
+    
     &:hover {
       background-color: #014e9f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(0);
     }
 
     .github-logo {
@@ -237,7 +253,7 @@ section {
   font-size: 16px;
   font-weight: 600;
   color: #ffffff;
-  background-color: #ff6c37; /* Postman’s signature orange */
+  background-color: #ff6c37; /* Postman's signature orange */
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -245,10 +261,12 @@ section {
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
 
   &:hover {
     background-color: #e65a2d;
     transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
 
   &:active {
