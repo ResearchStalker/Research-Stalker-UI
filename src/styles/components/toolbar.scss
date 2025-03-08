@@ -1,124 +1,101 @@
 /* General Toolbar Styling */
 .toolbar {
-  position: fixed;
-  top: 10px;
-  right: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 8px 12px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 4px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.5s ease;
-  z-index: 1050;
-  width: 316px; /* Default width when expanded */
+  transition: all 0.3s ease;
+  z-index: 1001;
+  width: auto;
   overflow: visible;
 }
 
 /* Collapsed Toolbar */
 .toolbar.collapsed {
-  width: 120px; /* Wider width when collapsed to fit the login button */
-  padding: 8px;
+  width: auto;
+  padding: 4px;
 }
 
 .toolbar.collapsed .toolbar-button {
-  opacity: 0.25;
-}
-
-.toolbar.collapsed .toolbar-button.login-button {
-  opacity: 1; /* Ensure login button is always visible */
+  opacity: 0.5;
+  transform: scale(0.9);
 }
 
 /* Toolbar Button Styles */
 .toolbar-button {
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 48px;
-  min-width: 48px;
-  padding: 10px 12px;
+  height: 36px;
+  width: 36px;
+  padding: 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.7);
   color: #003366;
   cursor: pointer;
-  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s;
-  text-transform: uppercase;
-  font-weight: bold;
+  transition: all 0.2s ease-in-out;
   flex-shrink: 0;
   position: relative;
-  overflow: clip;
-  transition: all 0.3s ease; /* Smooth transition for transform and opacity */
 }
 
 .toolbar-toggle-button {
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 48px;
-  min-width: 48px;
-  padding: 10px 12px;
+  height: 36px;
+  width: 36px;
+  padding: 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.7);
   color: #003366;
   cursor: pointer;
-  z-index: 1060;
+  z-index: 1002;
+  transition: all 0.2s ease-in-out;
 }
 
 /* Hover effect */
-.toolbar-button:hover {
+.toolbar-button:hover, .toolbar-toggle-button:hover {
   background: #003366;
   color: #fff;
   transform: scale(1.1);
 }
 
-/* Active (pressed) state for the Filter button */
+/* Active (pressed) state for buttons */
 .toolbar-button.active {
   background: #003366;
   color: #fff;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Tooltip Effect */
-.tooltip::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Show tooltip on hover */
-.tooltip:hover::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(-5px);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Icon Styling */
-.toolbar-button i {
-  font-size: 26px;
+.toolbar-button i, .toolbar-toggle-button i {
+  font-size: 20px;
   text-align: center;
 }
 
-.toolbar-toggle-button i {
-  font-size: 26px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 2px 4px;
+    gap: 4px;
+  }
+  
+  .toolbar-button, .toolbar-toggle-button {
+    height: 32px;
+    width: 32px;
+  }
+  
+  .toolbar-button i, .toolbar-toggle-button i {
+    font-size: 18px;
+  }
 }

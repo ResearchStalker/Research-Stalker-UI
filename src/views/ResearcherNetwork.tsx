@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FiltersSidebar from '../components/FiltersSidebar';
-import Toolbar from '../components/Toolbar';
 import ResearcherWindow from '../components/ResearcherWindow';
 import '../styles/views/researchNetwork.scss';
 
@@ -34,35 +33,16 @@ const ResearcherNetwork: React.FC = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    /*--ONLINE MODE--*/
-
+    
     useEffect(() => {
         if (location.state?.networkData) {
             setData(location.state.networkData);
         } else if (location.state?.loading) {
+            // Loading state is handled with the loading-container below
         } else {
             navigate('/');
         }
-        }, [location.state, navigate]);
-
-    /*--LOCAL MODE--*/
-    /*
-        useEffect(() => {
-            const fetchGraphData = async () => {
-                try {
-                    const response = await fetch('/data/mock-data/demo-rec-1.json');
-                    if (!response.ok) throw new Error('Failed to fetch network data');
-                    const jsonData: GraphData = await response.json();
-                    setData(jsonData);
-                } catch (error) {
-                    console.error('Error fetching network data:', error);
-                    setData(null);
-                }
-            };
-            fetchGraphData();
-        }, []);
-
-     */
+    }, [location.state, navigate]);
 
     const toggleFilters = () => {
         setFiltersVisible(!filtersVisible);
@@ -70,6 +50,13 @@ const ResearcherNetwork: React.FC = () => {
 
     const toggleGrid = () => {
         setGridVisible(!gridVisible);
+    };
+
+    const toolbarProps = {
+        toggleFilters,
+        toggleGrid,
+        gridActive: gridVisible,
+        filtersActive: filtersVisible
     };
 
     const affiliationColors = useMemo(() => {
@@ -119,11 +106,9 @@ const ResearcherNetwork: React.FC = () => {
         setBfsRequest(null);
     };
 
-
     return (
         <div className="research-network-container">
-            <Navbar />
-            <Toolbar toggleFilters={toggleFilters} graphView={graphView} toggleGrid={toggleGrid}/>
+            <Navbar toolbarProps={toolbarProps} />
 
             <div className="network-content">
                 {filtersVisible && (
@@ -165,7 +150,6 @@ const ResearcherNetwork: React.FC = () => {
                             </p>
                         </div>
                     </div>
-
                 )}
             </div>
 

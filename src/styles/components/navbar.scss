@@ -1,12 +1,12 @@
 /* Navbar */
 .research-navbar {
   padding: 15px 20px;
-  width: fit-content;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  background: transparent; /* Keep navbar transparent */
+  background: transparent; /* Transparent background */
   position: fixed; /* Keeps navbar fixed at the top */
   top: 0;
   left: 0;
@@ -14,25 +14,24 @@
   z-index: 1000; /* Ensures navbar is above everything */
 }
 
-.logo {
+.navbar-left {
   display: flex;
   align-items: center;
-  font-weight: bold;
-  font-size: 20px;
-  position: relative;
 }
 
-.logo a {
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-link {
   text-decoration: none; /* Ensure no underline */
   color: inherit; /* Maintain original text color */
 }
 
-.logo a:hover {
+.brand-link:hover {
   text-decoration: none; /* Prevent underline on hover */
-}
-
-.logo-icon {
-  margin-right: 8px;
 }
 
 /* Brand Name */
@@ -42,18 +41,21 @@
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: #003366;
-  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-  border-radius: 12px; /* Rounded corners */
   padding: 8px 16px; /* Add padding for better spacing */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for definition */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
   user-select: none; /* Prevent text selection */
-  pointer-events: none; /* Ensures no accidental text interactions */
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+}
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.95); /* Slightly more opaque on hover */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .research-navbar {
+    padding: 10px 15px;
+  }
+  
+  .brand-name {
+    font-size: 18px;
   }
 }
