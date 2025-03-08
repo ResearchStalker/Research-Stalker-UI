@@ -91,7 +91,7 @@ const Menu: React.FC = () => {
             <div className="menu-container">
                 <header className="menu-header">
                     <div className="title-container">
-                        <h1 className="menu-title">Research Stalker</h1>
+                        <h1 className="menu-title">Linked Scholar</h1>
                         <p className="menu-version">v0.2</p>
                     </div>
                     <p className="menu-subtitle">
@@ -115,7 +115,7 @@ const Menu: React.FC = () => {
         <div className="menu-container">
             <header className="menu-header">
                 <div className="title-container">
-                    <h1 className="menu-title">Research Stalker</h1>
+                    <h1 className="menu-title">Linked Scholar</h1>
                     <p className="menu-version">v0.2</p>
                 </div>
                 <p className="menu-subtitle">

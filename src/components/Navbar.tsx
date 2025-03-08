@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
         <nav className="research-navbar">
             <div className="logo">
                 <a href="/" className="brand-link">
-                    <span className="brand-name">Research Stalker</span>
+                    <span className="brand-name">Linked Scholar</span>
                 </a>
             </div>
         </nav>

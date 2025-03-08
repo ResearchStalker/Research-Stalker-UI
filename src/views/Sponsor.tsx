@@ -10,7 +10,7 @@ const Sponsor: React.FC = () => {
             <main className="content sponsor-content" style={{ minHeight: 'calc(100vh - 160px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <h1 className="footer-page-title">Become a Sponsor</h1>
                 <p className="sponsor-description">
-                    Support <strong>Research Stalker</strong> and help researchers connect, collaborate, and innovate.
+                    Support <strong>Linked Scholar</strong> and help researchers connect, collaborate, and innovate.
                     Your sponsorship will fund the development and maintenance of this platform.
                 </p>
 
@@ -47,7 +47,7 @@ const Sponsor: React.FC = () => {
                             <li>Special API usage plan</li>
                             <li>Company logo on the website</li>
                         </ul>
-                        <a href="mailto:contact@researchstalker.com">
+                        <a href="mailto:contact@Linked Scholar.com">
                             <button className="donate-button">Contact Us</button>
                         </a>
                     </div>
@@ -71,7 +71,7 @@ const Sponsor: React.FC = () => {
                     <div className="sponsor-card">
                         <h3 style={{ fontWeight: 'bold' }}>Custom Donation</h3>
                         <ul>
-                            <li>Choose your own donation amount to support Research Stalker.</li>
+                            <li>Choose your own donation amount to support Linked Scholar.</li>
                         </ul>
 
                         <a href="https://www.paypal.com/donate/?business=YOUR_PAYPAL_BUSINESS_EMAIL" target="_blank" rel="noopener noreferrer">
