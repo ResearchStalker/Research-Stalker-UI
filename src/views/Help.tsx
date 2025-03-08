@@ -14,9 +14,9 @@ const Help: React.FC = () => {
                     <h2>Frequently Asked Questions (FAQs)</h2>
 
                     <div className="faq-item">
-                        <h3>What is Research Stalker?</h3>
+                        <h3>What is Linked Scholar?</h3>
                         <p>
-                            Research Stalker is a web application designed to help users explore and analyze academic research networks.
+                            Linked Scholar is a web application designed to help users explore and analyze academic research networks.
                             It provides insights into researchers, their collaborations, and their fields of interest using publicly available data.
                         </p>
                     </div>
@@ -30,25 +30,25 @@ const Help: React.FC = () => {
                     </div>
 
                     <div className="faq-item">
-                        <h3>Is Research Stalker free to use?</h3>
+                        <h3>Is Linked Scholar free to use?</h3>
                         <p>
-                            Yes, Research Stalker is completely free to use. We are committed to providing open access to academic research insights.
+                            Yes, Linked Scholar is completely free to use. We are committed to providing open access to academic research insights.
                         </p>
                     </div>
 
                     <div className="faq-item">
                         <h3>Can I distribute or modify the software?</h3>
                         <p>
-                            Research Stalker is protected by copyright and intellectual property laws.
+                            Linked Scholar is protected by copyright and intellectual property laws.
                             You may not distribute, modify, or use the software for commercial purposes without explicit permission from the creators.
                             If you are interested in collaboration or distribution, please contact us at [Insert Contact Information].
                         </p>
                     </div>
 
                     <div className="faq-item">
-                        <h3>What are the future updates for Research Stalker?</h3>
+                        <h3>What are the future updates for Linked Scholar?</h3>
                         <p>
-                            We are continuously working to improve Research Stalker. Future updates may include:
+                            We are continuously working to improve Linked Scholar. Future updates may include:
                         </p>
                         <ul>
                             <li>Enhanced search and filtering capabilities.</li>

@@ -64,7 +64,7 @@ const FiltersSidebar: React.FC<FiltersSidebarProps> = ({
             </div>
 
             <div className="filter-window-content">
-                {/* Minimum Collaborations Filter */}
+                {/* Minimum Collaborations Filter 
                 <Form.Group className="metadata-item">
                     <Form.Label className="metadata-key">
                         Minimum Collaborations: {minEdgeWeight}
@@ -77,6 +77,7 @@ const FiltersSidebar: React.FC<FiltersSidebarProps> = ({
                         className="metadata-value"
                     />
                 </Form.Group>
+                */}
 
                 {/* Affiliation Filter */}
                 <div className="metadata-item full-width">

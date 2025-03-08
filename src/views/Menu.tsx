@@ -1,31 +1,37 @@
-// src/views/Menu.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/views/menu.scss';
 import { getNetwork, getUser } from '../service/ApiGatewayService';
-import { login } from '../service/AuthService';
+
+
 
 const Menu: React.FC = () => {
     const navigate = useNavigate();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState('');
-    const [user, setUser] = useState<{ email: string; picture?: string } | null>(null);
+    const [user, setUser] = useState<UserData | null>(null);
 
-    // Check if user is logged in by querying your backend/spring-security session
     useEffect(() => {
-        const fetchUserData = async () => {
+        const fetchUser = async () => {
             try {
                 const userData = await getUser();
-                setUser({ email: userData.email, picture: userData.picture });
+                setUser({
+                    id: userData.id,
+                    name: userData.name,
+                    surname: userData.surname,
+                    email: userData.email,
+                    picture: userData.picture
+                });
             } catch (error) {
                 setUser(null);
             }
         };
-
-        fetchUserData();
+        fetchUser();
     }, []);
+
 
     // Extract profile data from the provided URL
     const extractProfileData = (url: string) => {
@@ -85,60 +91,38 @@ const Menu: React.FC = () => {
         }
     };
 
-    // If user is not logged in, show the sign-in button
-    if (!user) {
-        return (
-            <div className="menu-container">
-                <header className="menu-header">
-                    <div className="title-container">
-                        <h1 className="menu-title">Research Stalker</h1>
-                        <p className="menu-version">v0.2</p>
-                    </div>
-                    <p className="menu-subtitle">
-                        Enter a Researcher Name, ORCID, Google Scholar or ResearchGate profile link
-                        to explore networking opportunities.
-                    </p>
-                </header>
-
-                <button className="search-button" onClick={login}>
-                    <i className="mdi mdi-google" style={{ marginRight: '8px' }}></i>
-                    Sign in with Google
-                </button>
-
-                <Footer />
-            </div>
-        );
-    }
-
-    // If user is logged in, show the search form
     return (
         <div className="menu-container">
-            <header className="menu-header">
-                <div className="title-container">
-                    <h1 className="menu-title">Research Stalker</h1>
-                    <p className="menu-version">v0.2</p>
+            <Navbar />
+            
+            <div className="menu-content">
+                <header className="menu-header">
+                    <div className="title-container">
+                        <h1 className="menu-title">Linked Scholar </h1>
+                        <p className="menu-version"> v0.2</p>
+                    </div>
+                </header>
+                
+                <div className="search-container-wrapper">
+                    <p className="search-info">
+                        Enter a Researcher Name, ORCID, Google Scholar or ResearchGate profile link to explore networking opportunities.
+                    </p>
+                    <form onSubmit={handleSearch} className="search-container">
+                        <input
+                            id="researcher-search-input"
+                            type="text"
+                            className="search-input"
+                            placeholder="Search Researchers..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <button type="submit" className="search-button">
+                            Search
+                        </button>
+                    </form>
+                    {error && <p className="error-message">{error}</p>}
                 </div>
-                <p className="menu-subtitle">
-                    Enter a Researcher Name, ORCID, Google Scholar or ResearchGate profile link
-                    to explore networking opportunities.
-                </p>
-            </header>
-
-            <form onSubmit={handleSearch} className="search-container">
-                <input
-                    id="researcher-search-input"
-                    type="text"
-                    className="search-input"
-                    placeholder="Search Researchers..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button type="submit" className="search-button">
-                    Search
-                </button>
-            </form>
-
-            {error && <p className="error-message">{error}</p>}
+            </div>
 
             <Footer />
         </div>
