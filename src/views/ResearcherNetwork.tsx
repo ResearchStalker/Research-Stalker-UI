@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FiltersSidebar from '../components/FiltersSidebar';
-import Toolbar from '../components/Toolbar';
 import ResearcherWindow from '../components/ResearcherWindow';
 import '../styles/views/researchNetwork.scss';
 
@@ -78,9 +77,7 @@ const ResearcherNetwork: React.FC = () => {
         if (location.state?.networkData) {
             setData(location.state.networkData);
         } else if (location.state?.loading) {
-            // Handle a loading state if needed
         } else {
-            // If no data and not loading, go back to home
             navigate('/');
         }
     }, [location.state, navigate]);
@@ -108,6 +105,13 @@ const ResearcherNetwork: React.FC = () => {
 
     const toggleGrid = () => {
         setGridVisible(!gridVisible);
+    };
+
+    const toolbarProps = {
+        toggleFilters,
+        toggleGrid,
+        gridActive: gridVisible,
+        filtersActive: filtersVisible
     };
 
     const affiliationColors = useMemo(() => {
@@ -163,17 +167,7 @@ const ResearcherNetwork: React.FC = () => {
 
     return (
         <div className="research-network-container">
-            <Navbar />
-
-            {/* 3) Pass the user & auth functions into Toolbar as props */}
-            <Toolbar
-                toggleFilters={toggleFilters}
-                graphView={graphView}
-                toggleGrid={toggleGrid}
-                user={user}
-                login={login}
-                logout={logout}
-            />
+            <Navbar toolbarProps={toolbarProps} />
 
             <div className="network-content">
                 {filtersVisible && (
@@ -230,7 +224,6 @@ const ResearcherNetwork: React.FC = () => {
                     onBFSRequest={handleBFSRequest}
                 />
             )}
-
             <Footer />
         </div>
     );

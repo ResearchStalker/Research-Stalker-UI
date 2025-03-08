@@ -9,12 +9,12 @@ const Contribute: React.FC = () => {
             <Navbar />
             <main className="content">
                 <h1 className="footer-page-title">Become a Collaborator</h1>
-                <p>Join Research Stalker and help researchers collaborate more effectively.</p>
+                <p>Join Linked Scholar and help researchers collaborate more effectively.</p>
 
                 <section>
                     <h2>How to Contribute</h2>
                     <p>
-                        Research Stalker is an open-source project, and we welcome contributions from developers, researchers, and enthusiasts.
+                        Linked Scholar is an open-source project, and we welcome contributions from developers, researchers, and enthusiasts.
                         Here’s how you can get involved:
                     </p>
                     <ul>
@@ -28,7 +28,7 @@ const Contribute: React.FC = () => {
                             <strong>Improve Documentation:</strong> Help us improve the documentation to make the project more accessible.
                         </li>
                         <li>
-                            <strong>Spread the Word:</strong> Share Research Stalker with your network to help us grow.
+                            <strong>Spread the Word:</strong> Share Linked Scholar with your network to help us grow.
                         </li>
                     </ul>
                 </section>
@@ -36,7 +36,7 @@ const Contribute: React.FC = () => {
                 <section>
                     <h2>GitHub Repository</h2>
                     <p>
-                        The source code for Research Stalker is hosted on GitHub. You can find the repository, report issues, and contribute here:
+                        The source code for Linked Scholar is hosted on GitHub. You can find the repository, report issues, and contribute here:
                     </p>
                     <div className="github-repo">
                         <a
@@ -50,7 +50,7 @@ const Contribute: React.FC = () => {
                                 alt="GitHub Logo"
                                 className="github-logo"
                             />
-                            <span>Research Stalker Repository</span>
+                            <span>Linked Scholar Repository</span>
                         </a>
                     </div>
                 </section>

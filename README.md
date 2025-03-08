@@ -1,4 +1,4 @@
-# ResearchStalker Client
+# Linked Scholar Client
 
 This client is a React application that uses **TypeScript**, **SCSS** for styling, and **React Router** for navigation. 
 It includes interactive visualizations such as the **Searcher** and **Researcher Network** views. 
