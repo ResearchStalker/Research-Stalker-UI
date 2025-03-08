@@ -1,4 +1,3 @@
-// src/views/Menu.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -6,26 +5,33 @@ import Footer from '../components/Footer';
 import '../styles/views/menu.scss';
 import { getNetwork, getUser } from '../service/ApiGatewayService';
 
+
+
 const Menu: React.FC = () => {
     const navigate = useNavigate();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState('');
-    const [user, setUser] = useState<{ email: string; picture?: string } | null>(null);
+    const [user, setUser] = useState<UserData | null>(null);
 
-    // Check if user is logged in by querying your backend/spring-security session
     useEffect(() => {
-        const fetchUserData = async () => {
+        const fetchUser = async () => {
             try {
                 const userData = await getUser();
-                setUser({ email: userData.email, picture: userData.picture });
+                setUser({
+                    id: userData.id,
+                    name: userData.name,
+                    surname: userData.surname,
+                    email: userData.email,
+                    picture: userData.picture
+                });
             } catch (error) {
                 setUser(null);
             }
         };
-
-        fetchUserData();
+        fetchUser();
     }, []);
+
 
     // Extract profile data from the provided URL
     const extractProfileData = (url: string) => {

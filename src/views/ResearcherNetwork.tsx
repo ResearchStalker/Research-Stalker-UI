@@ -11,19 +11,10 @@ import { LinkDatum } from '../propTypes/link';
 import ForceGraphContainer from '../components/network/ForceGraphContainer';
 
 import { getUser } from '../service/ApiGatewayService';
-import { login, logout } from '../service/AuthService';
 
 interface GraphData {
     nodes: NodeDatum[];
     links: LinkDatum[];
-}
-
-interface UserData {
-    id: string,
-    name: string,
-    surname: string,
-    email: string;
-    picture?: string;
 }
 
 const ResearcherNetwork: React.FC = () => {
@@ -63,7 +54,6 @@ const ResearcherNetwork: React.FC = () => {
                     picture: userData.picture
                 });
             } catch (error) {
-                // If failed or not logged in, set user to null
                 setUser(null);
             }
         };
