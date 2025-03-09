@@ -1,0 +1,218 @@
+.registration-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .registration-modal {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease-out;
+    position: relative;
+    text-align: center;
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: #333;
+    }
+  }
+  
+  .registration-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icon-container {
+    width: 70px;
+    height: 70px;
+    background-color: #f0f4f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+    i {
+      font-size: 36px;
+      color: #003366;
+    }
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+    
+    &.benefits {
+      font-weight: 500;
+      color: #444;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .benefits-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 25px;
+    width: 100%;
+    text-align: center;
+    
+    li {
+      padding: 8px 0;
+      color: #444;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:before {
+        content: "✓";
+        color: #003366;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  }
+  
+  .signup-button {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    background-color: #003366;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px;
+    
+    &:hover {
+      background-color: #002244;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  .upgrade-note {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    
+    a {
+      color: #003366;
+      text-decoration: none;
+      font-weight: 500;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .registration-modal {
+      width: 95%;
+      padding: 25px 20px;
+    }
+    
+    h2 {
+      font-size: 22px;
+    }
+    
+    p {
+      font-size: 15px;
+    }
+    
+    .benefits-list li {
+      font-size: 15px;
+    }
+    
+    .icon-container {
+      width: 60px;
+      height: 60px;
+      
+      i {
+        font-size: 30px;
+      }
+    }
+    
+    .signup-button {
+      font-size: 15px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .registration-modal {
+      padding: 20px 15px;
+    }
+    
+    h2 {
+      font-size: 20px;
+    }
+    
+    p {
+      font-size: 14px;
+    }
+    
+    .benefits-list li {
+      font-size: 14px;
+    }
+    
+    .signup-button {
+      font-size: 14px;
+    }
+    
+    .upgrade-note {
+      font-size: 13px;
+    }
+  }

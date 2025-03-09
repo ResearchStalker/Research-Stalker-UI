@@ -7,6 +7,7 @@ import '../styles/views/menu.scss';
 import { getNetwork, getUser } from '../service/ApiGatewayService';
 import { UserData } from '../propTypes/userData';
 import PricingModal from '../components/PricingModal';
+import RegistrationModal from '../components/RegistrationModal';
 
 const Menu: React.FC = () => {
     const navigate = useNavigate();
@@ -14,7 +15,9 @@ const Menu: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState('');
     const [user, setUser] = useState<UserData | null>(null);
+
     const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+    const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(true);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -134,6 +137,10 @@ const Menu: React.FC = () => {
             </div>
 
             <Footer />
+            <RegistrationModal 
+                isOpen={isRegistrationModalOpen} 
+                onClose={() => setIsRegistrationModalOpen(false)} 
+            />
             <PricingModal 
                 isOpen={isPricingModalOpen} 
                 onClose={() => setIsPricingModalOpen(false)} 
