@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/views/menu.scss';
 import { getNetwork, getUser } from '../service/ApiGatewayService';
 import { UserData } from '../propTypes/userData';
+import PricingModal from '../components/PricingModal';
 
 const Menu: React.FC = () => {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ const Menu: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState('');
     const [user, setUser] = useState<UserData | null>(null);
+    const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -50,21 +53,20 @@ const Menu: React.FC = () => {
         return null;
     };
 
-    // Handle the search form submission (unchanged from original)
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
 
         if (searchTerm.trim()) {
             const profileData = extractProfileData(searchTerm);
-
+    
             if (profileData) {
                 let timedOut = false;
                 const timer = setTimeout(() => {
                     timedOut = true;
                     navigate('/network', { state: { networkData: null, loading: true } });
                 }, 10000);
-
+    
                 try {
                     const recursivity = 0;
                     const response = await getNetwork(
@@ -74,12 +76,19 @@ const Menu: React.FC = () => {
                         recursivity
                     );
                     clearTimeout(timer);
-
+    
                     navigate('/network', {
                         state: { networkData: response, loading: false },
                     });
                 } catch (error) {
                     clearTimeout(timer);
+                    
+                    // PLACEHOLDER
+                    if (axios.isAxiosError(error) && error.response && error.response.status === 500) {
+                        setIsPricingModalOpen(true);
+                        return;
+                    }
+
                     setError('Failed to fetch network data. Please try again.');
                 }
             } else {
@@ -125,6 +134,10 @@ const Menu: React.FC = () => {
             </div>
 
             <Footer />
+            <PricingModal 
+                isOpen={isPricingModalOpen} 
+                onClose={() => setIsPricingModalOpen(false)} 
+            />
         </div>
     );
 };
