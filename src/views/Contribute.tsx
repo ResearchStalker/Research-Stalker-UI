@@ -61,7 +61,7 @@ const Contribute: React.FC = () => {
                         If you have any questions or need guidance on contributing, feel free to reach out to us:
                     </p>
                     <p>
-                        <strong>Email:</strong> [Insert Email Address]<br />
+                        <strong>Email:</strong> contact@linkedscholar.io<br />
                         <strong>Address:</strong> [Insert Physical Address]
                     </p>
                 </section>
