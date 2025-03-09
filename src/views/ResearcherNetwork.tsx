@@ -10,8 +10,6 @@ import { NodeDatum } from '../propTypes/node';
 import { LinkDatum } from '../propTypes/link';
 import ForceGraphContainer from '../components/network/ForceGraphContainer';
 
-import { getUser } from '../service/ApiGatewayService';
-
 interface GraphData {
     nodes: NodeDatum[];
     links: LinkDatum[];
@@ -33,32 +31,8 @@ const ResearcherNetwork: React.FC = () => {
         selectedValue: string;
     } | null>(null);
 
-
-    const [user, setUser] = useState<UserData | null>(null);
-
     const location = useLocation();
     const navigate = useNavigate();
-
-    // --------------------------------------
-    // 1) Fetch the user data
-    // --------------------------------------
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const userData = await getUser();
-                setUser({
-                    id: userData.id,
-                    name: userData.name,
-                    surname: userData.surname,
-                    email: userData.email,
-                    picture: userData.picture
-                });
-            } catch (error) {
-                setUser(null);
-            }
-        };
-        fetchUser();
-    }, []);
 
     // --------------------------------------
     // 2) Fetch or set up the network data

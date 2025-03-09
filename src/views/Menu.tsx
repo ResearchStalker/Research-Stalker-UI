@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/views/menu.scss';
 import { getNetwork, getUser } from '../service/ApiGatewayService';
+import { UserData } from '../propTypes/userData';
 
 const Menu: React.FC = () => {
     const navigate = useNavigate();
@@ -67,6 +68,7 @@ const Menu: React.FC = () => {
                 try {
                     const recursivity = 0;
                     const response = await getNetwork(
+                        true,
                         profileData.author_id,
                         profileData.source,
                         recursivity
