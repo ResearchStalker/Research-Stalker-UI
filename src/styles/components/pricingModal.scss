@@ -289,3 +289,120 @@
     height: 5px;
     visibility: hidden;
   }
+
+
+  @media (max-width: 768px) {
+    .pricing-modal {
+      width: 95%;
+      padding: 20px 15px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .pricing-modal-header {
+      margin-bottom: 20px;
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      p {
+        font-size: 14px;
+      }
+      
+      .close-button {
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+      }
+    }
+    
+    .pricing-plans {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .pricing-plan {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .billing-toggle {
+      margin-bottom: 20px;
+      
+      span {
+        font-size: 13px;
+      }
+      
+      .switch {
+        width: 44px;
+        height: 22px;
+      }
+      
+      .slider:before {
+        height: 16px;
+        width: 16px;
+      }
+      
+      input:checked + .slider:before {
+        transform: translateX(22px);
+      }
+    }
+    
+    .price {
+      .amount {
+        font-size: 20px;
+      }
+      
+      .currency, .period {
+        font-size: 14px;
+      }
+    }
+    
+    .plan-features ul li {
+      font-size: 14px;
+      padding: 6px 0;
+    }
+    
+    .pricing-footer p {
+      font-size: 14px;
+    }
+  }
+  
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .pricing-modal-header h2 {
+      font-size: 18px;
+    }
+    
+    .pricing-modal-header p {
+      font-size: 13px;
+    }
+    
+    .price .amount {
+      font-size: 26px;
+    }
+    
+    .billing-toggle {
+      gap: 8px;
+      
+      span {
+        font-size: 12px;
+      }
+    }
+    
+    .plan-button {
+      padding: 8px;
+      font-size: 13px;
+    }
+    
+    .billed-annually {
+      font-size: 12px;
+    }
+    
+    .empty-placeholder {
+      height: 10px; 
+    }
+  }
+  
